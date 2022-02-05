@@ -22,7 +22,7 @@ namespace CarModelsDemo.Controllers
         // GET: CarModelsLogics
         public async Task<IActionResult> Index()
         {
-            return View(await _context.CarModelsLogic.ToListAsync());
+            return View(await _context.CarModelsLogics.ToListAsync());
         }
 
         // GET: CarModelsLogics/Details/5
@@ -33,7 +33,7 @@ namespace CarModelsDemo.Controllers
                 return NotFound();
             }
 
-            var carModelsLogic = await _context.CarModelsLogic
+            var carModelsLogic = await _context.CarModelsLogics
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (carModelsLogic == null)
             {
@@ -73,7 +73,7 @@ namespace CarModelsDemo.Controllers
                 return NotFound();
             }
 
-            var carModelsLogic = await _context.CarModelsLogic.FindAsync(id);
+            var carModelsLogic = await _context.CarModelsLogics.FindAsync(id);
             if (carModelsLogic == null)
             {
                 return NotFound();
@@ -124,7 +124,7 @@ namespace CarModelsDemo.Controllers
                 return NotFound();
             }
 
-            var carModelsLogic = await _context.CarModelsLogic
+            var carModelsLogic = await _context.CarModelsLogics
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (carModelsLogic == null)
             {
@@ -139,15 +139,15 @@ namespace CarModelsDemo.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var carModelsLogic = await _context.CarModelsLogic.FindAsync(id);
-            _context.CarModelsLogic.Remove(carModelsLogic);
+            var carModelsLogic = await _context.CarModelsLogics.FindAsync(id);
+            _context.CarModelsLogics.Remove(carModelsLogic);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool CarModelsLogicExists(int id)
         {
-            return _context.CarModelsLogic.Any(e => e.Id == id);
+            return _context.CarModelsLogics.Any(e => e.Id == id);
         }
     }
 }
